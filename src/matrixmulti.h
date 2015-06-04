@@ -19,7 +19,10 @@
 
 #define LOOP_COUNT 10 //
 
+typedef struct{
+};
+
 void classical();
-void Classical_Multi(int *input, int *result);
+void Classical_Multi(int **input1, int **input2, int **result);
 
 #endif /* MATRIXMULTI_H_ */

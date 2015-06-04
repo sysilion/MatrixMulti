@@ -7,12 +7,12 @@
 
 #include "matrixmulti.h"
 
-int *input;
+int **input;
 // input array size
 int data_size;
 
-int main(){
-	int go, size, i;
+int main() {
+	int go, size, i, j;
 
 	printf("\n\t\tSelect Menu");
 	printf("\n\t1. Classical Matrix Multi");
@@ -27,22 +27,27 @@ int main(){
 	printf("input Matrix size (exponentiation of 2) : ");
 	scanf("%d", &size);
 
-	data_size = (int)pow(2,size);
+	data_size = (int) pow(2, size);
 
 	srand(time(NULL));
 
 	// malloc square input
-	input = (int *)malloc(sizeof(int) * data_size * data_size);
-
-	// alloc rand data
-	for (i = 0; i < data_size * data_size; i++){
-		input[i] = rand()%10+1;
-//		// random input print
-//		printf("%d ", input[i]);
-//		if (i%data_size == data_size-1) printf("\n");
+	input = (int **) malloc(sizeof(int) * data_size);
+	for (i = 0; i < data_size; i++) {
+		input[i] = (int *) malloc(sizeof(int) * data_size);
 	}
 
-	switch(go){
+	// alloc rand data
+	for (i = 0; i < data_size; i++) {
+		for (j = 0; j < data_size; j++) {
+			input[i][j] = rand() % 10 + 1;
+	//		// random input print
+	//		printf("%d ", input[i]);
+	//		if (i%data_size == data_size-1) printf("\n");
+		}
+	}
+
+	switch (go) {
 	case 1:
 		classical();
 		break;
